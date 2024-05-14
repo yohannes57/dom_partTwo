@@ -8,13 +8,23 @@ Set the content of mainEl to <h1>DOM Manipulation</h1>. There are a variety o
 Add a class of flex-ctr to mainEl.
 Hint: Use the Element.classList API.
 */
+
+
+
 let mainEl=document.getElementsByTagName('main');
 console.log(mainEl)
 
 mainEl[0].style.backgroundColor="var(--main-bg)"
 mainEl[0].style.borderTop="0px"
 
+// mainEl[0].innerHTML=`<h1>Dom manipulation </h1>`
 let heading=document.createElement('h1');
 heading.innerHTML="DOM MANUPULATION LAB";
 console.log(heading)
 mainEl[0].appendChild(heading);
+//
+mainEl[0].classList.add('flex-ctr');
+let body=document.getElementsByName('body');
+body[0].style.backgroundColor="var(--top-menu-bg)"
+
+// mainEl[0,parentNode].style.backgroundColor="var(--main-bg)"
