@@ -73,6 +73,15 @@ let menuLinks = [
     ],
   },
 ];
+/////////////////////////////
+//catch up the subLinks to subLink
+let subLink = [];
+menuLinks.map((link) => {
+  subLink.push(link.subLinks);
+});
+// console.log(subLink);
+
+/////////////////////////////
 /*
   // Iterate over the entire menuLinks array and for each "link" object:
   // Create an <a> element.
@@ -134,7 +143,8 @@ for (let i = 0; i < topMenuLinks.length; i++) {
     topMenuLinks[i].classList.toggle("active");
     //check topMenuLinks[i] has value
     if (!topMenuLinks[i] == "a") return;
-    // console.log(topMenuLinks[i].textContent)//log the contente about,order ...etc
+
+    //set attribute
     if (
       topMenuLinks[i].textContent == "about" ||
       topMenuLinks[i].textContent == "catalog" ||
@@ -142,25 +152,26 @@ for (let i = 0; i < topMenuLinks.length; i++) {
       topMenuLinks[i].textContent == "account"
     ) {
       topMenuLinks[i].setAttribute("className", "active");
-      // buildSubmenu(menuLinks[i].subLinks);//itwork but apended all?
     }
-    //
+    //log tocheck if active is assigned to topMenuLinks
     console.log(topMenuLinks[i].getAttribute("className")); //return active;
+
+    //if its className is active ,the heiht 100 ...etc
     if (
       topMenuLinks[i].classList.contains("active") &&
       topMenuLinks[i].textContent != "about"
     ) {
-      // element.classList.remove("mystyle");
       subMenuEl.style.height = "100%";
       subMenuEl.style.backgroundColor = "var(--sub-menu-bg)";
       subMenuEl.classList.add("flex-around");
       buildSubmenu(menuLinks[i].subLinks);
     } else {
+      //remove or reverse back to
       subMenuEl.style.height = "0%";
       subMenuEl.innerHTML = " ";
       subMenuEl.classList.remove("flex-around");
     }
-    //clear other eleemnt
+    //clear other element if they have active className
     for (let j = 0; j < topMenuLinks.length; j++) {
       if (j !== i) {
         topMenuLinks[j].classList.remove("active");
@@ -200,13 +211,41 @@ function buildSubmenu(links) {
 /*
   5.2
   The menu is almost complete! Now, we need to add interactions to the submenu items themselves:
-Attach a delegated 'click' event listener to subMenuEl.
+Attach a delegtaed 'click' event listener to subMenuEl.
 The first line of code of the event listener function should call the event object's preventDefault() method.
+
 The second line of code within the function should immediately return if the element clicked was not an <a> element.
 Log the content of the <a> to verify the handler is working.
+
 Next, the event listener should set the CSS top property of subMenuEl to 0.
+
 Remove the active class from each <a> element in topMenuLinks.
+
 Update the contents of mainEl, within an <h1>, to the contents of the <a> element clicked within subMenuEl.
 If the ABOUT link is clicked, an <h1>About</h1> should be displayed.
   
   */
+///////eventListener for the submenu themselves
+subMenuEl.addEventListener("click", (e) => {
+  e.preventDefault();
+  for (let i = 0; i < subLink.length; i++) {
+    if (!subLink.length == "a") return;
+    //
+    if (
+      topMenuLinks[i].classList.contains("active") &&
+      topMenuLinks[i].textContent != "about"
+    ) {
+      subMenuEl.style.height = "100%";
+      subMenuEl.style.backgroundColor = "var(--sub-menu-bg)";
+      subMenuEl.classList.add("flex-around");
+    } else {
+      //remove or reverse back to
+      subMenuEl.style.height = "0%";
+      subMenuEl.innerHTML = " ";
+      subMenuEl.classList.remove("flex-around");
+    }
+  }
+  if (topMenuLinks[i].textContent == "about") {
+     subMenuEl.
+   };
+});
