@@ -79,6 +79,13 @@ let subLink = [];
 menuLinks.map((link) => {
   subLink.push(link.subLinks);
 });
+//////////////////////////////
+//sublinks into the array
+let allSubLinks = menuLinks.flatMap(menuItem => menuItem.subLinks || []);
+
+//////////////////////////
+//all text together
+let subLinkTexts = allSubLinks.map(subLink => subLink.text);
 // console.log(subLink);
 
 /////////////////////////////
@@ -238,8 +245,7 @@ If the ABOUT link is clicked, an <h1>About</h1> should be displayed.
 subMenuEl.addEventListener("click", (e) => {
   e.preventDefault();
   // console.log("subLink ...", subLink.length);
-  for (let i = 0; i < subLink.length; i++) {
-    if (!subLink.length == "a") return;
+  for (let i = 0; i <  .length; i++) {
     //
     if (
       topMenuLinks[i].classList.contains("active") &&
@@ -258,8 +264,7 @@ subMenuEl.addEventListener("click", (e) => {
     // console.log("a..........", topMenuLinks[0].subLinks.textContent);
     console.log("hello");
     if (menuLinks[i].subLinks !== "about") {
-      heading.innerHTML = topMenuLinks[i].subLinks;
-      console.log(heading, "..about from heading");
+      heading.innerHTML = subLinkTexts[i];
       // subMenuEl.style.display = "none";
       mainEl[0].appendChild(heading);
     }
@@ -267,3 +272,41 @@ subMenuEl.addEventListener("click", (e) => {
     ////
   }
 });
+///////////////////////////////////////////////////////
+
+// let isClicked=false;
+// subMenuEl.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   e.stopPropagation()
+//   isClicked=true;
+//   // console.log("subLink ...", subLink.length);
+  
+//   for (let i = 0;isClicked; i++) {
+//     if (
+//       topMenuLinks[i].classList.contains("active") &&
+//       topMenuLinks[i].textContent != "about"
+//     ) {
+//       subMenuEl.style.height = "100%";
+//       subMenuEl.style.backgroundColor = "var(--sub-menu-bg)";
+//       subMenuEl.classList.add("flex-around");
+//     } else {
+//       subMenuEl.style.height = "0%";
+//       // subMenuEl.innerHTML = "";
+//       subMenuEl.classList.remove("flex-around");
+//     }
+
+//     ////#######_when each subLinks clicked it displayed on h1
+//     // console.log("a..........", topMenuLinks[0].subLinks.textContent);
+//       // heading2.textContent="subLinkTexts[i];"
+//       console.log(subLinkTexts[i], "from click");
+//       // subMenuEl.style.display = "none";
+//       mainEl[0].append(subLinkTexts[i]);
+//     ////
+//     isClicked=false;
+//   }
+// });
+
+//////////////////
+// for(let i=0;i<subLinkTexts.length;i++){
+//   console.log(subLinkTexts[i])
+// }
