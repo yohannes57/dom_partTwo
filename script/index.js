@@ -224,6 +224,7 @@ function buildSubmenu(links) {
     subMenuEl.append(aLink);
   });
 }
+console.log("sumMenuEL",subMenuEl)
 /*
   5.2
   The menu is almost complete! Now, we need to add interactions to the submenu items themselves:
@@ -242,46 +243,11 @@ If the ABOUT link is clicked, an <h1>About</h1> should be displayed.
   
   */
 ///////eventListener for the submenu themselves
-subMenuEl.addEventListener("click", (e) => {
-  e.preventDefault();
-  // console.log("subLink ...", subLink.length);
-  for (let i = 0; i <subLinkTexts.length; i++) {
-    //
-    if (
-      topMenuLinks[i].classList.contains("active") &&
-      topMenuLinks[i].textContent != "about"
-    ) {
-      subMenuEl.style.height = "100%";
-      subMenuEl.style.backgroundColor = "var(--sub-menu-bg)";
-      subMenuEl.classList.add("flex-around");
-    } else {
-      subMenuEl.style.height = "0%";
-      // subMenuEl.innerHTML = "";
-      subMenuEl.classList.remove("flex-around");
-    }
-
-    ////#######_when each subLinks clicked it displayed on h1
-    // console.log("a..........", topMenuLinks[0].subLinks.textContent);
-    console.log("hello");
-    if (menuLinks[i].subLinks !== "about") {
-      heading.innerHTML = subLinkTexts[i];
-      // subMenuEl.style.display = "none";
-      mainEl[0].appendChild(heading);
-    }
-
-    ////
-  }
-});
-///////////////////////////////////////////////////////
-
-// let isClicked=false;
 // subMenuEl.addEventListener("click", (e) => {
 //   e.preventDefault();
-//   e.stopPropagation()
-//   isClicked=true;
 //   // console.log("subLink ...", subLink.length);
-  
-//   for (let i = 0;isClicked; i++) {
+//   for (let i = 0; i <subLinkTexts.length; i++) {
+//     //
 //     if (
 //       topMenuLinks[i].classList.contains("active") &&
 //       topMenuLinks[i].textContent != "about"
@@ -294,17 +260,58 @@ subMenuEl.addEventListener("click", (e) => {
 //       // subMenuEl.innerHTML = "";
 //       subMenuEl.classList.remove("flex-around");
 //     }
+//     // console.log(subMenuEl,",,,,")
+//     console.log(e)
 
+//     console.log(subLinkTexts[i],"...");
 //     ////#######_when each subLinks clicked it displayed on h1
 //     // console.log("a..........", topMenuLinks[0].subLinks.textContent);
-//       // heading2.textContent="subLinkTexts[i];"
-//       console.log(subLinkTexts[i], "from click");
+//     console.log("hello");
+//     if (subLinkTexts[i].subLinks !== "about") {
+//       heading.innerHTML = subLinkTexts[i];
+//       console.log(subLinkTexts[i]);
 //       // subMenuEl.style.display = "none";
-//       mainEl[0].append(subLinkTexts[i]);
+//       mainEl[0].appendChild(heading);
+//     }
+
 //     ////
-//     isClicked=false;
 //   }
 // });
+///////////////////////////////////////////////////////
+
+// let isClicked=false;
+subMenuEl.addEventListener("click", (e) => {
+  e.preventDefault();
+  e.stopPropagation()
+  isClicked=true;
+  // console.log("subLink ...", subLink.length);
+  
+  for (let i = 0;i<subLinkTexts.length; i++) {
+    if (
+      topMenuLinks[i].classList.contains("active") &&
+      topMenuLinks[i].textContent != "about"
+    ) {
+      subMenuEl.style.height = "100%";
+      subMenuEl.style.backgroundColor = "var(--sub-menu-bg)";
+      subMenuEl.classList.add("flex-around");
+      
+    } else {
+      subMenuEl.style.height = "0%";
+      // subMenuEl.innerHTML = "";
+      subMenuEl.classList.remove("flex-around");
+    }
+
+    ////#######_when each subLinks clicked it displayed on h1
+     if(subLinkTexts=="all" || subLinkTexts=="search" ){
+      console.log(subLinkTexts,"...all")
+     }
+    // // console.log("a..........", topMenuLinks[0].subLinks.textContent);
+    //   // heading2.textContent="subLinkTexts[i];"
+    //   console.log(subLinkTexts[i], "from click");
+    //   // subMenuEl.style.display = "none";
+    //   mainEl[0].append(subLinkTexts[i]);
+  }
+});
 
 //////////////////
 // for(let i=0;i<subLinkTexts.length;i++){
