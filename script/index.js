@@ -250,16 +250,17 @@ subMenuEl.addEventListener("click", (e) => {
       subMenuEl.classList.add("flex-around");
     } else {
       subMenuEl.style.height = "0%";
-      subMenuEl.innerHTML = "";
+      // subMenuEl.innerHTML = "";
       subMenuEl.classList.remove("flex-around");
     }
 
     ////#######_when each subLinks clicked it displayed on h1
-    console.log("a..........", topMenuLinks[0].subLinks[0].textContent);
+    // console.log("a..........", topMenuLinks[0].subLinks.textContent);
     console.log("hello");
     if (menuLinks[i].subLinks !== "about") {
-      heading.innerHTML = menuLinks[i].subLinks.textContent;
+      heading.innerHTML = topMenuLinks[i].subLinks;
       console.log(heading, "..about from heading");
+      // subMenuEl.style.display = "none";
       mainEl[0].appendChild(heading);
     }
 
