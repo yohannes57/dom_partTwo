@@ -245,7 +245,7 @@ If the ABOUT link is clicked, an <h1>About</h1> should be displayed.
 subMenuEl.addEventListener("click", (e) => {
   e.preventDefault();
   // console.log("subLink ...", subLink.length);
-  for (let i = 0; i <  .length; i++) {
+  for (let i = 0; i <subLinkTexts.length; i++) {
     //
     if (
       topMenuLinks[i].classList.contains("active") &&
