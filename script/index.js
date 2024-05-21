@@ -171,6 +171,15 @@ for (let i = 0; i < topMenuLinks.length; i++) {
       subMenuEl.innerHTML = " ";
       subMenuEl.classList.remove("flex-around");
     }
+    //######################### when about clicked
+    // console.log(topMenuLinks[i].textContent == "about", true); //true when about clicked
+    if (topMenuLinks[i].textContent == "about") {
+      // console.log("about clicked ", topMenuLinks[0].textContent);
+      heading.innerHTML = "<h1>about</h1>";
+      // console.log(heading, "..about from heading");
+      mainEl[0].appendChild(heading);
+    }
+    ////////////////////////////////
     //clear other element if they have active className
     for (let j = 0; j < topMenuLinks.length; j++) {
       if (j !== i) {
@@ -228,6 +237,7 @@ If the ABOUT link is clicked, an <h1>About</h1> should be displayed.
 ///////eventListener for the submenu themselves
 subMenuEl.addEventListener("click", (e) => {
   e.preventDefault();
+  // console.log("subLink ...", subLink.length);
   for (let i = 0; i < subLink.length; i++) {
     if (!subLink.length == "a") return;
     //
@@ -239,13 +249,20 @@ subMenuEl.addEventListener("click", (e) => {
       subMenuEl.style.backgroundColor = "var(--sub-menu-bg)";
       subMenuEl.classList.add("flex-around");
     } else {
-      //remove or reverse back to
       subMenuEl.style.height = "0%";
-      subMenuEl.innerHTML = " ";
+      subMenuEl.innerHTML = "";
       subMenuEl.classList.remove("flex-around");
     }
+
+    ////#######_when each subLinks clicked it displayed on h1
+    console.log("a..........", topMenuLinks[0].subLinks[0].textContent);
+    console.log("hello");
+    if (menuLinks[i].subLinks !== "about") {
+      heading.innerHTML = menuLinks[i].subLinks.textContent;
+      console.log(heading, "..about from heading");
+      mainEl[0].appendChild(heading);
+    }
+
+    ////
   }
-  if (topMenuLinks[i].textContent == "about") {
-     subMenuEl.
-   };
 });
